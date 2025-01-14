@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:diary/ui/register.dart';
 import 'package:diary/utils/db_helper.dart';
+import 'package:diary/utils/auth_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
@@ -64,13 +65,8 @@ class LoginPageState extends State<LoginPage> {
     );
   }
 
-  login() {
-
-  }
-
-  static Future<bool> saveUserData(value) async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    return await sharedPreferences.setInt("user_id", value);
+  login () async {
+    await saveUserData("");
   }
 
   @override
