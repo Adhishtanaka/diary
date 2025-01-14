@@ -15,17 +15,18 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('diary'),
+      appBar: AppBar(
+        title: const Text('diary'),
+      ),
+      body: Container(
+        margin: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            Text("Hello , $userName !!"),
+            Text(now),
+          ],
         ),
-        body: Container(
-          margin: const EdgeInsets.all(20),
-          child: Column(
-            children: [
-              Text("Hello , $userName !!"),
-              Text(now),
-            ],
-          ),
-        ));
+      ),
+    );
   }
 }
