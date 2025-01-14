@@ -10,3 +10,12 @@ Future getUserData() async {
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
   return sharedPreferences.getInt("user_id");
 }
+
+String encryptPassword(password) {
+  return "";
+}
+
+bool checkPassword(password, hash) {
+  String passwordHash = encryptPassword(password);
+  return passwordHash == hash;
+}
