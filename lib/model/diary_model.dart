@@ -3,6 +3,7 @@ class DiaryModel {
   String title;
   String description;
   DateTime date;
+  String? images;
 
-  DiaryModel(this.id, this.title, this.description, this.date);
+  DiaryModel(this.id, this.title, this.description, this.date, [this.images]);
 }
