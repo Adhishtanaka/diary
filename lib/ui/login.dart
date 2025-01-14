@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:diary/ui/register.dart';
 import 'package:diary/utils/db_helper.dart';
 import 'package:diary/utils/auth_helper.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

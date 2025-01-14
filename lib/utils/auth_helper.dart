@@ -11,6 +11,11 @@ Future getUserData() async {
   return sharedPreferences.getInt("user_id");
 }
 
+Future<bool> logout() async {
+  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  return await sharedPreferences.clear();
+}
+
 String encryptPassword(password) {
   return "";
 }
