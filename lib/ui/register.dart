@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:diary/utils/db_helper.dart';
+import 'package:diary/utils/auth_helper.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -9,75 +9,48 @@ class RegisterPage extends StatefulWidget {
 }
 
 class RegisterPageState extends State<RegisterPage> {
-  final _formKey = GlobalKey<FormState>();
-  final _nameController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  Future<void> register() async {
+    String name = nameController.text;
+    String email = emailController.text;
+    String password = passwordController.text;
+    await registerUser(name, email, password);
+    Navigator.pop(context);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('diary Register'),
-        centerTitle: true,
-      ),
-      body: Form(
-        key: _formKey,
+      appBar: AppBar(title: const Text("Register")),
+      body: SingleChildScrollView(child:Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextFormField(
-              controller: _nameController,
-              decoration: const InputDecoration(
-                labelText: 'Username',
-                prefixIcon: Icon(Icons.person),
-              ),
+            TextField(
+              controller: nameController,
+              decoration: const InputDecoration(labelText: "Name"),
             ),
-            const SizedBox(height: 16),
-            TextFormField(
-              controller: _emailController,
-              decoration: const InputDecoration(
-                labelText: 'Email',
-                prefixIcon: Icon(Icons.email),
-              ),
+            TextField(
+              controller: emailController,
+              decoration: const InputDecoration(labelText: "Email"),
             ),
-            const SizedBox(height: 16),
-            TextFormField(
-              controller: _passwordController,
-              decoration: const InputDecoration(
-                labelText: 'Password',
-                prefixIcon: Icon(Icons.lock),
-              ),
+            TextField(
+              controller: passwordController,
               obscureText: true,
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: register(),
-              child: const Text('Register'),
+              decoration: const InputDecoration(labelText: "Password"),
             ),
             const SizedBox(height: 20),
+            ElevatedButton(onPressed: register, child: const Text("Register")),
             TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const RegisterPage()),
-                );
-              },
-              child: const Text('Already have an account? Login'),
-            ),
+              onPressed: () => Navigator.pushNamed(context, '/login'),
+              child: const Text("Do you already have an account?"),
+            )
           ],
         ),
       ),
-    );
-  }
-
-  register() {}
-
-  @override
-  void dispose() {
-    _nameController.dispose();
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
+    ));
   }
 }

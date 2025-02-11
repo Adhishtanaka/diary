@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:diary/ui/register.dart';
-import 'package:diary/utils/db_helper.dart';
 import 'package:diary/utils/auth_helper.dart';
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -11,67 +10,48 @@ class LoginPage extends StatefulWidget {
 }
 
 class LoginPageState extends State<LoginPage> {
-  final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  Future<void> login() async {
+    String email = emailController.text;
+    String password = passwordController.text;
+    var user = await loginUser(email, password);
+    if (user != null) {
+      Navigator.pushReplacementNamed(context, '/home');
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Invalid credentials"))
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('diary Login'),
-        centerTitle: true,
-      ),
-      body: Form(
-        key: _formKey,
+      appBar: AppBar(title: const Text("Login")),
+      body: SingleChildScrollView(child:Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextFormField(
-              controller: _emailController,
-              decoration: const InputDecoration(
-                labelText: 'Email',
-                prefixIcon: Icon(Icons.email),
-              ),
+            TextField(
+              controller: emailController,
+              decoration: const InputDecoration(labelText: "Email"),
             ),
-            const SizedBox(height: 16),
-            TextFormField(
-              controller: _passwordController,
-              decoration: const InputDecoration(
-                labelText: 'Password',
-                prefixIcon: Icon(Icons.lock),
-              ),
+            TextField(
+              controller: passwordController,
               obscureText: true,
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: login(),
-              child: const Text('Login'),
+              decoration: const InputDecoration(labelText: "Password"),
             ),
             const SizedBox(height: 20),
+            ElevatedButton(onPressed: login, child: const Text("Login")),
             TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const RegisterPage()),
-                );
-              },
-              child: const Text('Don\'t have an account? Register'),
-            ),
+              onPressed: () => Navigator.pushNamed(context, '/register'),
+              child: const Text("Don't have an account?"),
+            )
           ],
         ),
       ),
-    );
-  }
-
-  login () async {
-    await saveUserData("");
-  }
-
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
+    ));
   }
 }

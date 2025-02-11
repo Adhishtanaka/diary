@@ -24,7 +24,7 @@ class DatabaseHelper {
           'CREATE TABLE users(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, email TEXT, password TEXT)'
         );
         await db.execute(
-          'CREATE TABLE diary(id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INTEGER, title TEXT, description TEXT, date_time DATETIME, image_urls TEXT)'
+          'CREATE TABLE diary(id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INTEGER, title TEXT, description TEXT, date_time DATETIME)'
         );
       },
     );
