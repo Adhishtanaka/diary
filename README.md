@@ -23,11 +23,11 @@ The **Flutter Diary App** is a simple yet powerful journaling application that a
 ## Installation
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/flutter-diary.git
+   git clone https://github.com/Adhishtanaka/diary.git
    ```
 2. Navigate to the project directory:
    ```sh
-   cd flutter-diary
+   cd diary
    ```
 3. Install dependencies:
    ```sh
@@ -59,18 +59,18 @@ lib/
 |   |-- db_helper.dart
 ```
 
-## Contributions
-Contributions are welcome! Feel free to submit issues and pull requests.
-
-## License
-This project is licensed under the MIT License. See [MIT License](LICENSE) for details.
-
 ## Contact
 
 - **Author**: [Adhishtanaka](https://github.com/Adhishtanaka)
 - **Email**: kulasoooriyaa@gmail.com
 
 ---
+
+## Contributions
+If you find any bugs or want to suggest improvements, feel free to open an issue or pull request on the [GitHub repository](https://github.com/Adhishtanaka/diary/pulls).
+
+## License
+This project is licensed under the MIT License. See [MIT License](LICENSE) for details.
 
 Made with ❤️ using Flutter.
 
