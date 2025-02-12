@@ -3,7 +3,7 @@
 ## Overview
 The **Flutter Diary App** is a simple yet powerful journaling application that allows users to record their daily thoughts and experiences. It features user authentication, encrypted password storage, and a clean calendar interface to view past entries.
 
-![Diary App](screenshot/a1.gif)
+<img src="screenshot/a1.gif" alt="Diary App" width="300">
 
 ## Features
 - User authentication (Register/Login/Logout)
