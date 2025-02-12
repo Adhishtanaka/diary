@@ -46,18 +46,6 @@ The **Flutter Diary App** is a simple yet powerful journaling application that a
 - **Add new diary entries** by pressing the floating action button.
 - **Log out** securely when finished.
 
-## Folder Structure
-```
-lib/
-|-- main.dart (Entry point)
-|-- ui/
-|   |-- home_page.dart
-|   |-- diary_detail.dart
-|-- utils/
-|   |-- auth_helper.dart
-|   |-- diary_helper.dart
-|   |-- db_helper.dart
-```
 
 ## Contact
 
